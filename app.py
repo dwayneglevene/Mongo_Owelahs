@@ -138,3 +138,18 @@ def login():
 def logout():
     session.clear()
     return redirect('/')
+
+
+#only shows my events
+
+@app.route('/myevents')
+
+def myevents():
+    #connect to db
+    collection=mongo.db.events
+    #find all data
+    name = session['username']
+    events = collection.find({"user":name})
+
+    #return a message
+    return render_template('person.html',events = events)

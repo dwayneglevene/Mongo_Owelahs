@@ -1,9 +1,13 @@
 <html>
     <head>
         <title>Community Events Board</title>
+        <link rel="stylesheet" href="static/css/style.css">
     </head>
     <body>
       <h1>Community Events Board</h1>
+      {% if session %}<a href="/myevents">My events</a>
+      <p><a href="/events/new">Add event</a></p>
+      {% endif %}
       <div class="event-list">
         <ul>
           {% for event in events %}
@@ -12,7 +16,8 @@
         </ul>
       </div>
 {% if session %}
-<p>You are logged in</p>
+
+<p>You are logged in as {{session['username']}} <a href="/logout">Logout</a></p>
 {% else %}
 
       <form action="/login" method="post">
@@ -27,3 +32,4 @@
 {% endif %}
     </body>
 </html>
+
