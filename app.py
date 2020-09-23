@@ -67,6 +67,9 @@ def new_event():
         event_date = request.form["event_date"]
         user_name = request.form["user_name"]
         event_desc = request.form["event_desc"]
+        # profile_image= request.files["profile_image"]
+        # mongo.save_file(profile_image.filename,profile_image)
+       
 
         #connect to db
         collection = mongo.db.events
@@ -74,6 +77,8 @@ def new_event():
         collection.insert({"event":event_name,"date":event_date,"description":event_desc,"user":user_name})
         #return
         return redirect('/')
+
+
 
 
 @app.route('/name/<name>')

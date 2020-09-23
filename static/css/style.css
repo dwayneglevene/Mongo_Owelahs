@@ -1,8 +1,26 @@
-body{
+/* body{
 background-image:url('https://www.ga4gh.org/wp-content/uploads/8th-plenary-850x425-1.png');
 background-repeat: no-repeat;
 
 background-size:cover;
 
 
+} */
+
+.container{
+    margin-top:40px;
+}
+
+body{
+    background-color:#5CD895 !important;
+    color:#EDF5E1 !important;
+}
+
+.card{
+    background-color:#05386B !important;
+    margin-bottom:20px !important;
+}
+
+.textbox{
+    width:300px !important;
 }

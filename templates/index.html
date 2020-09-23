@@ -1,35 +1,80 @@
 <html>
-    <head>
-        <title>Community Events Board</title>
-        <link rel="stylesheet" href="static/css/style.css">
-    </head>
-    <body>
-      <h1>Community Events Board</h1>
-      {% if session %}<a href="/myevents">My events</a>
-      <p><a href="/events/new">Add event</a></p>
-      {% endif %}
-      <div class="event-list">
-        <ul>
-          {% for event in events %}
-            <li><a href=/event/{{event._id}}>{{ event.event }}</a> - {{ event.date }} {% if event.user %} (<a href="/name/{{event.user}}">{{event.user}}</a>) {% endif %}</li>
-          {% endfor %}
-        </ul>
-      </div>
-{% if session %}
 
-<p>You are logged in as {{session['username']}} <a href="/logout">Logout</a></p>
-{% else %}
+<head>
+	<title>Community Events Board</title>
+	<link rel="stylesheet" href="static/css/style.css?q={{time}}">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
-      <form action="/login" method="post">
-<label for ="name">Name</label>
-<input type="text" name="username">
-<label for="password">Password</label>
-<input type="password" name="password">
-<input type="submit" value="Login">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+	<h1>I was there :)</h1>
+            </div>
+            <div class="col-sm-6">
+                {% if session %}
+
+	<p>You are logged in as {{session['username']}} <a href="/logout">Logout</a></p>
+	{% else %}
+
+	<form action="/login" method="post">
+		<label for ="name">Name</label>
+		<input type="text" name="username">
+		<label for="password">Password</label>
+		<input type="password" name="password">
+		<input type="submit" value="Login">
 </form>
-<p>No account? <a href="/signup">Sign Up</a></p>
+		<p>No account? <a href="/signup">Sign Up</a></p>
 
-{% endif %}
-    </body>
+		{% endif %}
+            </div>
+        </div>
+        <div class="row">
+        <div class="col-sm-6">
+	{% if session %}<a href="/myevents">My events</a>
+	<p><a href="/events/new">Add event</a></p>
+	{% endif %}
+	<div class="event-list">
+		<!-- <ul> -->
+			{% for event in events %}
+
+            <div class="card">
+  <div class="card-body";>
+    <a href=/event/{{event._id}}>{{ event.event }} </a> - {{ event.date }} {% if event.user %} (<a
+					href="/name/{{event.user}}">{{event.user}}</a>) {% endif %}
+  </div>
+</div>
+			<!-- <li><a href=/event/{{event._id}}>{{ event.event }} </a> - {{ event.date }} {% if event.user %} (<a
+					href="/name/{{event.user}}">{{event.user}}</a>) {% endif %}</li> -->
+			{% endfor %}
+		<!-- </ul> -->
+	</div>
+	<!-- {% if session %}
+
+	<p>You are logged in as {{session['username']}} <a href="/logout">Logout</a></p>
+	{% else %}
+
+	<form action="/login" method="post">
+		<label for ="name">Name</label>
+		<input type="text" name="username">
+		<label for="password">Password</label>
+		<input type="password" name="password">
+		<input type="submit" value="Login">
+</form>
+		<p>No account? <a href="/signup">Sign Up</a></p>
+
+		{% endif %} -->
+        </div>
+        
+        <div class="col-sm-6" height="">
+            <h2>Welcome to I was there</h2>
+            <p>where you can store your memories and give reviews of fun concert experiences.Sign up and join the conversation.</p>
+        </div>
+        </div>
+        
+    </div>
+</body>
+
 </html>
-
